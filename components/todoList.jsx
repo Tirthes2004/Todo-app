@@ -1,17 +1,19 @@
+"use client";
+
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import {
   Collapsible,
-  CollapsibleTrigger,
   CollapsibleContent,
+  CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
 import { Pencil, Check, X, Trash2  } from "lucide-react";
 
 function todoList({ todos, setTodos, todo, setTodo }) {
   return (
-    <div className="w-full max-w-3xl mx-auto gap-3 flex flex-col px-4">
+    <div className="relative z-10 w-full max-w-3xl mx-auto gap-3 flex flex-col px-4">
       {todos.map((todo, index) => (
         <div key={todo.id}>
           <Card
@@ -23,7 +25,7 @@ function todoList({ todos, setTodos, todo, setTodo }) {
           >
             <CardContent>
               <Collapsible className="rounded-md data-[state=open]:bg-transparent flex flex-col gap-2">
-                <CollapsibleTrigger asChild>
+                <CollapsibleTrigger asChild className="cursor-pointer">
                   <Button variant="ghost" className={`group w-full min-h-8 h-auto justify-start text-left whitespace-normal break-words ${todo.done ? 'line-through' : ''}`}>
                     <span className="min-w-0 flex-1 break-words">{todo.title}</span>
                     <ChevronDownIcon className="ml-auto shrink-0 group-data-[state=open]:rotate-180" />

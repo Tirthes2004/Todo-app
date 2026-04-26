@@ -33,7 +33,7 @@ export default function InputInline({ loading, setLoading, todo, setTodo, todos,
           });
           setTodo({ title: "", desp: "", done: false, id: null });
         }
-      }} className="h-10 sm:h-full w-full sm:w-auto px-6 rounded-xl text-white font-medium border border-green-300/20 bg-green-500/30 backdrop-blur-xl shadow-[0_8px_32px_rgba(34,197,94,0.25)] hover:bg-green-500/20 hover:scale-105 transition-all duration-300">
+      }} className="cursor-pointer h-10 sm:h-full w-full sm:w-auto px-6 rounded-xl text-white font-medium border border-green-300/20 bg-green-500/30 backdrop-blur-xl shadow-[0_8px_32px_rgba(34,197,94,0.25)] hover:bg-green-500/20 hover:scale-105 transition-all duration-300">
         {todo.id === null ? "Add" : "Update"}
       </Button>
     </Field>

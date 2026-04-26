@@ -56,13 +56,14 @@ export const StarsBackground = ({
     updateStars();
 
     const resizeObserver = new ResizeObserver(updateStars);
-    if (canvasRef.current) {
-      resizeObserver.observe(canvasRef.current);
+    const canvas = canvasRef.current;
+    if (canvas) {
+      resizeObserver.observe(canvas);
     }
 
     return () => {
-      if (canvasRef.current) {
-        resizeObserver.unobserve(canvasRef.current);
+      if (canvas) {
+        resizeObserver.unobserve(canvas);
       }
     };
   }, [
@@ -111,6 +112,6 @@ export const StarsBackground = ({
   return (
     <canvas
       ref={canvasRef}
-      className={cn("h-full w-full absolute inset-0", className)} />
+      className={cn("pointer-events-none absolute inset-0 h-full w-full", className)} />
   );
 };
