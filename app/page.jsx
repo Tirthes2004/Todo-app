@@ -5,6 +5,8 @@ import Header from "@/components/header.jsx";
 import TodoInput from "@/components/todoInput.jsx";
 import TodoList from "@/components/todoList.jsx";
 import {NewSpotlight} from "@/components/ui/spotlight-new";
+import { ShootingStars } from "@/components/ui/shooting-stars";
+import { StarsBackground } from "@/components/ui/stars-background";
 
 function Page() {
   const [loading, setLoading] = useState(false);
@@ -33,6 +35,9 @@ function Page() {
       <Header />
       <TodoInput loading={loading} setLoading={setLoading} todo={todo} setTodo={setTodo} todos={todos} setTodos={setTodos} />
       {loading ? <Loading /> : <TodoList todos={todos} setTodos={setTodos} todo={todo} setTodo={setTodo} />}
+
+      <ShootingStars />
+      <StarsBackground />
     </div>
   );
 }
