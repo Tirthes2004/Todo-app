@@ -1,36 +1,105 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Todo List
+
+A responsive Todo List app built with Next.js, React, Tailwind CSS, and shadcn-style UI components. The app lets you add, edit, complete, and delete todos, with data persisted in the browser using `localStorage`.
+
+## Features
+
+- Add todos with a title and description
+- Edit existing todos
+- Mark todos as complete or incomplete
+- Delete todos
+- Persist todos in `localStorage`
+- Responsive layout for desktop, tablet, and mobile screens
+- Animated visual effects using spotlight and sparkles components
+
+## Tech Stack
+
+- Next.js 16
+- React 19
+- Tailwind CSS 4
+- shadcn UI-style components
+- Radix UI
+- Lucide React icons
+- tsParticles
+- Motion
+
+## Project Structure
+
+```text
+todo_list/
+|-- app/
+|   |-- globals.css
+|   |-- layout.jsx
+|   `-- page.jsx
+|-- components/
+|   |-- header.jsx
+|   |-- loading.jsx
+|   |-- todoInput.jsx
+|   |-- todoList.jsx
+|   `-- ui/
+|-- lib/
+|   `-- utils.js
+|-- public/
+|-- package.json
+`-- README.md
+```
 
 ## Getting Started
 
-First, run the development server:
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open the app in your browser:
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Available Scripts
 
-## Learn More
+```bash
+npm run dev
+```
 
-To learn more about Next.js, take a look at the following resources:
+Runs the app in development mode.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Creates an optimized production build.
 
-## Deploy on Vercel
+```bash
+npm run start
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Starts the production server after building.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run lint
+```
+
+Runs ESLint to check code quality.
+
+## Main Files
+
+- `app/page.jsx`: Main todo app state and layout
+- `components/header.jsx`: App header and visual header styling
+- `components/todoInput.jsx`: Todo input form
+- `components/todoList.jsx`: Todo list, edit, complete, and delete controls
+- `components/ui/`: Reusable UI components
+
+## Notes
+
+- Todo data is stored locally in the browser, so todos are specific to the current device and browser.
+- This project uses the Next.js App Router.
+- Styling is handled mostly through Tailwind CSS utility classes.
