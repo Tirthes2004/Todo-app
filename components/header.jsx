@@ -1,8 +1,9 @@
 import React from "react";
 import { CheckCircle2, CalendarDays } from "lucide-react";
 import { SparklesCore } from "../components/ui/sparkles";
+import { DatePicker } from "./ui/datePicker";
 
-function Header() {
+function Header({date, setDate}) {
   return (
     <div className="relative w-full bg-black flex flex-col items-center overflow-visible rounded-md">
       <header className="relative w-[calc(100%-2rem)] max-w-5xl rounded-xl overflow-visible mb-8 mt-8 sm:mt-12 bg-transparent">
@@ -36,9 +37,10 @@ function Header() {
             {/* Right Badge */}
             <div className="flex shrink-0 items-center gap-2 px-3 py-2 sm:px-4 rounded-2xl bg-white/10 border border-white/20 backdrop-blur-xl text-white text-xs sm:text-sm">
               <CalendarDays className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-              Today
+              <DatePicker date={date} setDate={setDate} />
             </div>
           </div>
+
 
           {/* Sparkles attached to content bottom */}
           <div className="pointer-events-none absolute left-1/2 top-full -translate-x-1/2 -mt-px w-[40rem] h-32 sm:h-40 overflow-visible [mask-image:radial-gradient(80%_100%_at_50%_0%,white,transparent)]">

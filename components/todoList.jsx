@@ -9,9 +9,10 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import { ChevronDownIcon } from "@radix-ui/react-icons";
-import { Pencil, Check, X, Trash2  } from "lucide-react";
+import { Pencil, Check, X, Trash2 } from "lucide-react";
+import { format } from "date-fns";
 
-function todoList({ todos, setTodos, todo, setTodo }) {
+function todoList({ todos, setTodos, setTodo, setDate }) {
   return (
     <div className="relative z-10 w-full max-w-3xl mx-auto gap-3 flex flex-col px-4">
       {todos.map((todo, index) => (
@@ -26,32 +27,63 @@ function todoList({ todos, setTodos, todo, setTodo }) {
             <CardContent>
               <Collapsible className="rounded-md data-[state=open]:bg-transparent flex flex-col gap-2">
                 <CollapsibleTrigger asChild className="cursor-pointer">
-                  <Button variant="ghost" className={`group w-full min-h-8 h-auto justify-start text-left whitespace-normal break-words ${todo.done ? 'line-through' : ''}`}>
-                    <span className="min-w-0 flex-1 break-words">{todo.title}</span>
+                  <Button
+                    variant="ghost"
+                    className={`group w-full min-h-8 h-auto justify-start text-left whitespace-normal break-words ${todo.done ? "line-through" : ""}`}
+                  >
+                    <span className="min-w-0 flex-1 break-words">
+                      {todo.title}
+                    </span>
                     <ChevronDownIcon className="ml-auto shrink-0 group-data-[state=open]:rotate-180" />
                   </Button>
                 </CollapsibleTrigger>
                 <CollapsibleContent className="flex flex-col items-start gap-2  pt-0 text-sm">
-                  <div className="w-full break-words text-white/85">{todo.desp}</div>
-                  <div className="flex flex-wrap gap-2">
-                    <Button onClick={() => {
-                      setTodo(todo);
-                    }} size="xs" className="cursor-pointer bg-transparent border border-white/30 hover:bg-white/10">
-                      <Pencil size={14} />
-                    </Button>
-                    <Button onClick={() => {
-                      todo.done = !todo.done;
-                      setTodos([...todos.slice(0, index), todo, ...todos.slice(index + 1)]);
-                      console.log(todo);
-                    }} size="xs" className="cursor-pointer bg-transparent border border-white/30 hover:bg-white/10">
-                      {todo.done ? <X size={14} /> : <Check size={14} />}
-                    </Button>
-                    <Button onClick={() => {
-                      const newTodos = todos.filter((_, i) => i !== index);
-                      setTodos(newTodos);
-                    }} size="xs" className="cursor-pointer bg-transparent border border-white/30 hover:bg-white/10">
-                      <Trash2  size={14} />
-                    </Button>
+                  <div className="w-full break-words text-white/85">
+                    {todo.desp}
+                  </div>
+
+                  <div className="flex flex-wrap w-full justify-between">
+                    <div className="flex flex-wrap gap-2">
+                      <Button
+                        onClick={() => {
+                          setTodo(todo);
+                          setDate(new Date(todo.completionDate));
+                        }}
+                        size="xs"
+                        className="cursor-pointer bg-transparent border border-white/30 hover:bg-white/10"
+                      >
+                        <Pencil size={14} />
+                      </Button>
+                      <Button
+                        onClick={() => {
+                          todo.done = !todo.done;
+                          setTodos([
+                            ...todos.slice(0, index),
+                            todo,
+                            ...todos.slice(index + 1),
+                          ]);
+                          console.log(todo);
+                        }}
+                        size="xs"
+                        className="cursor-pointer bg-transparent border border-white/30 hover:bg-white/10"
+                      >
+                        {todo.done ? <X size={14} /> : <Check size={14} />}
+                      </Button>
+                      <Button
+                        onClick={() => {
+                          const newTodos = todos.filter((_, i) => i !== index);
+                          setTodos(newTodos);
+                        }}
+                        size="xs"
+                        className="cursor-pointer bg-transparent border border-white/30 hover:bg-white/10"
+                      >
+                        <Trash2 size={14} />
+                      </Button>
+                    </div>
+                    <div className="text-xs text-white/70 flex flex-wrap flex-col">
+                      <p>Created: {format(todo.createdAt, "dd MMM yyyy")}</p>
+                      <p>Completion date: {format(todo.completionDate, "dd MMM yyyy")}</p>
+                    </div>
                   </div>
                 </CollapsibleContent>
               </Collapsible>
